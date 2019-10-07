@@ -23,47 +23,47 @@ class ConcentrationModel
         shuffleCards()
     }
     
+    
     func cardFlip(cardIndex:Int)
     {
         if !cards[cardIndex].isMatch
         {
-
-            if let matchIndex=flippedCard, matchIndex != cardIndex{
-                if cards[matchIndex].ID==cards[cardIndex].ID
+            // this is where we need to explain the logic
+            if let matchIndex = flippedCard, matchIndex != cardIndex {
+                if cards[matchIndex].ID == cards[cardIndex].ID
                 {
-                    cards[cardIndex].isMatch=true
-                    cards[matchIndex].isMatch=true
+                    cards[cardIndex].isMatch = true
+                    cards[matchIndex].isMatch = true
                     score+=2
                 }
                 else
                 {
-                    if cards[cardIndex].countFlips>0
+                    if cards[cardIndex].countFlips > 0
                     {
-                        score-=1
+                        score -= 1
                     }
-                    if cards[matchIndex].countFlips>1
+                    if cards[matchIndex].countFlips > 1
                     {
-                        score-=1
+                        score -= 1
                     }
                 }
-                cards[cardIndex].isFaceUp=true
-                cards[cardIndex].countFlips+=1
-                flippedCard=nil
+                cards[cardIndex].isFaceUp = true
+                cards[cardIndex].countFlips += 1
+                flippedCard = nil
             }
             else
             {
                 for currCard in cards.indices
                 {
-                    cards[currCard].isFaceUp=false
+                    cards[currCard].isFaceUp = false
                 }
-                flippedCard=cardIndex
-                cards[cardIndex].isFaceUp=true
-                cards[cardIndex].countFlips+=1
+                flippedCard = cardIndex
+                cards[cardIndex].isFaceUp = true
+                cards[cardIndex].countFlips += 1
             }
         }
         
         moves+=1
-        
     }
     
     func shuffleCards(){
