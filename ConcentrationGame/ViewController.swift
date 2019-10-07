@@ -46,11 +46,11 @@ class ViewController: UIViewController {
     }
         
     @IBAction func NewGame(_ sender: UIButton) {
-        game=ConcentrationModel(numberOfCardsPairs: (cards.count+1)/2)
-        theme=themes.randomElement() ?? Theme(cardColor: #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1), backgroundColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), cardEmojis: ["🎃","🙀","🦇","😈","🏴‍☠️","☠️","👻","🧟‍♂️"])
-        cardsEmoji = Dictionary<Int,String>()
-        emojis=theme.cardEmojis
-        updateViewFromModel()
+        self.game = ConcentrationModel(numberOfCardsPairs: (cards.count+1)/2)
+        self.theme = self.themes.randomElement() ?? Theme(cardColor: #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1), backgroundColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), cardEmojis: ["🎃","🙀","🦇","😈","🏴‍☠️","☠️","👻","🧟‍♂️"])
+        self.cardsEmoji = Dictionary<Int,String>()
+        self.emojis=theme.cardEmojis
+        self.updateViewFromModel()
     }
     
     func updateViewFromModel()
