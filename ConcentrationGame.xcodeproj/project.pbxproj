@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2508D5472349B4730078BF81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2508D5462349B4730078BF81 /* ViewController.swift */; };
+		2508D5472349B4730078BF81 /* ConcentrationGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2508D5462349B4730078BF81 /* ConcentrationGameViewController.swift */; };
 		2508D5492349BA690078BF81 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2508D5482349BA690078BF81 /* Theme.swift */; };
 		259CCEB023461CDE000DCF17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259CCEAF23461CDE000DCF17 /* AppDelegate.swift */; };
 		259CCEB523461CDE000DCF17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 259CCEB323461CDE000DCF17 /* Main.storyboard */; };
@@ -18,7 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2508D5462349B4730078BF81 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2508D5462349B4730078BF81 /* ConcentrationGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcentrationGameViewController.swift; sourceTree = "<group>"; };
 		2508D5482349BA690078BF81 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		259CCEAC23461CDE000DCF17 /* ConcentrationGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConcentrationGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		259CCEAF23461CDE000DCF17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -63,7 +63,7 @@
 				259CCEC123461E38000DCF17 /* Supporting Files */,
 				259CCEC4234620C4000DCF17 /* ConcentrationModel.swift */,
 				259CCEB323461CDE000DCF17 /* Main.storyboard */,
-				2508D5462349B4730078BF81 /* ViewController.swift */,
+				2508D5462349B4730078BF81 /* ConcentrationGameViewController.swift */,
 				259CCEBB23461CE0000DCF17 /* Info.plist */,
 				259CCEC6234623A2000DCF17 /* Card.swift */,
 				2508D5482349BA690078BF81 /* Theme.swift */,
@@ -155,7 +155,7 @@
 				259CCEC5234620C4000DCF17 /* ConcentrationModel.swift in Sources */,
 				259CCEB023461CDE000DCF17 /* AppDelegate.swift in Sources */,
 				2508D5492349BA690078BF81 /* Theme.swift in Sources */,
-				2508D5472349B4730078BF81 /* ViewController.swift in Sources */,
+				2508D5472349B4730078BF81 /* ConcentrationGameViewController.swift in Sources */,
 				259CCEC7234623A2000DCF17 /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
