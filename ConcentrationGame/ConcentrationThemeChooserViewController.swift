@@ -18,6 +18,24 @@ class ConcentrationThemeChooserViewController: UIViewController {
                 "Flags" : Theme(cardColor: #colorLiteral(red: 0.01680417731, green: 0.1983509958, blue: 1, alpha: 1), backgroundColor: #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1), cardEmojis: ["🇦🇽","🇺🇸","🇧🇷","🇨🇷","🇨🇦","🇮🇱","🇯🇵","🇬🇧"]),
     ]
     
+    
+    private func getSplitViewDetailVC() -> ConcentrationGameViewController?{
+        return splitViewController?.viewControllers.last as? ConcentrationGameViewController
+    }
+    
+    @IBAction func changeTheme(_ sender: Any) {
+        //if controller exist - change theme (no segue)
+        if let cvc = getSplitViewDetailVC() {
+            if let themeName = (sender as? UIButton)?.currentTitle, let theme = themes[themeName] {
+                cvc.theme = theme
+            }
+        }
+        //no exist game view controller - segue
+        else {
+            performSegue(withIdentifier: "Choose Theme", sender: sender)
+        }
+    }
+    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Choose Theme" {
