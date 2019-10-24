@@ -12,12 +12,13 @@ class ConcentrationGameViewController: UIViewController {
     
     lazy var game=ConcentrationModel(numberOfCardsPairs: (cards.count+1)/2)
 
-    var cardsEmoji = Dictionary<Int,String>()
+//    var cardsEmoji = Dictionary<Int,String>()
+    var cardsEmoji = Dictionary<Int,Int>()
     var theme: Theme?
     {
         didSet {
             self.emojis = self.theme!.cardEmojis
-            self.cardsEmoji = Dictionary<Int, String>()
+            //self.cardsEmoji = Dictionary<Int, Int>()
             self.updateViewFromModel()
         }
     }
@@ -35,6 +36,8 @@ class ConcentrationGameViewController: UIViewController {
     }
         
     @IBAction func CardClicked(_ sender: UIButton) {
+        //if no theme set - take halloween (on iPad)
+        self.theme = self.theme ?? Theme(cardColor: #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1), backgroundColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), cardEmojis: ["🎃","🙀","🦇","😈","🏴‍☠️","☠️","👻","🧟‍♂️"])
         if let cardNumber=cards.firstIndex(of: sender)
         {
             game.cardFlip(cardIndex: cardNumber)
@@ -48,18 +51,20 @@ class ConcentrationGameViewController: UIViewController {
         
     @IBAction func NewGame(_ sender: UIButton) {
         self.game = ConcentrationModel(numberOfCardsPairs: (cards.count+1)/2)
-        self.cardsEmoji = Dictionary<Int,String>()
+        self.cardsEmoji = Dictionary<Int,Int>()
         self.updateViewFromModel()
     }
     
     func updateViewFromModel()
     {
         //check function is called only if buttons already set
-        if cards != nil, theme != nil {
+        if cards != nil, theme != nil{
             for cardIndex in cards.indices
             {
                 let card=game.cards[cardIndex]
                 let button=cards[cardIndex]
+                button.titleLabel?.minimumScaleFactor = 0.5;
+                button.titleLabel?.adjustsFontSizeToFitWidth = true;
                 if card.isFaceUp
                 {
                     button.backgroundColor=#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -90,11 +95,16 @@ class ConcentrationGameViewController: UIViewController {
     {
         if cardsEmoji[card.ID] == nil
         {
-            let randIndex=Int(arc4random_uniform(UInt32(emojis.count)))
-            cardsEmoji[card.ID]=emojis.remove(at: randIndex)
+            var randIndex=Int(arc4random_uniform(UInt32(emojis.count)))
+            while self.cardsEmoji.values.contains(randIndex)
+            {
+                 randIndex=Int(arc4random_uniform(UInt32(emojis.count)))
+            }
+            cardsEmoji[card.ID]=randIndex
         }
         
-        return cardsEmoji[card.ID] ?? "?"
+        //return cardsEmoji[card.ID] ?? "?"
+        return self.theme?.cardEmojis[cardsEmoji[card.ID]!] ?? "?"
     }
 }
 
