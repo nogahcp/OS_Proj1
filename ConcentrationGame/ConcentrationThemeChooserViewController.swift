@@ -19,7 +19,6 @@ class ConcentrationThemeChooserViewController: UIViewController {
     ]
     
     // MARK: - Navigation
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Choose Theme" {
             //get theme name from button
