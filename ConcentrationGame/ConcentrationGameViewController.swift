@@ -13,15 +13,15 @@ class ConcentrationGameViewController: UIViewController {
     lazy var game=ConcentrationModel(numberOfCardsPairs: (cards.count+1)/2)
 
     var cardsEmoji = Dictionary<Int,String>()
-    var theme = Theme(cardColor: #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1), backgroundColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), cardEmojis: ["🎃","🙀","🦇","😈","🏴‍☠️","☠️","👻","🧟‍♂️"])
+    var theme: Theme?
     {
         didSet {
-            self.emojis = self.theme.cardEmojis
+            self.emojis = self.theme!.cardEmojis
             self.cardsEmoji = Dictionary<Int, String>()
             self.updateViewFromModel()
         }
     }
-    lazy var emojis = theme.cardEmojis
+    lazy var emojis: [String] = []
     
     @IBOutlet var cards: [UIButton]!
     @IBOutlet weak var score: UILabel!
@@ -48,16 +48,14 @@ class ConcentrationGameViewController: UIViewController {
         
     @IBAction func NewGame(_ sender: UIButton) {
         self.game = ConcentrationModel(numberOfCardsPairs: (cards.count+1)/2)
-        //self.theme = self.themes.randomElement() ?? Theme(cardColor: #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1), backgroundColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), cardEmojis: ["🎃","🙀","🦇","😈","🏴‍☠️","☠️","👻","🧟‍♂️"])
         self.cardsEmoji = Dictionary<Int,String>()
-        self.emojis=theme.cardEmojis
         self.updateViewFromModel()
     }
     
     func updateViewFromModel()
     {
         //check function is called only if buttons already set
-        if cards != nil {
+        if cards != nil, theme != nil {
             for cardIndex in cards.indices
             {
                 let card=game.cards[cardIndex]
@@ -76,12 +74,12 @@ class ConcentrationGameViewController: UIViewController {
                     }
                     else
                     {
-                        button.backgroundColor=theme.cardColor
+                        button.backgroundColor=theme!.cardColor
                         button.setTitle("", for: UIControl.State.normal)
                     }
                 }
             }
-            background.backgroundColor=theme.backgroundColor
+            background.backgroundColor=theme!.backgroundColor
             score.text="score: \(game.score)"
             movesCount.text="moves: \(game.moves)"
         }
